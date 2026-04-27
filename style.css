@@ -1,0 +1,24 @@
+html, body {
+    background-color: rgb(32, 33, 51);
+    color: gainsboro;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#backgroundImage, #titleScreenImage, #canvasContainer {
+    width: 700px;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: top;
+    background-size: cover;
+    color: gainsboro;
+}
+
+#titleScreenImage {
+    translate: 0px -700px;
+}
