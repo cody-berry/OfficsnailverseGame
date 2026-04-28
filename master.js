@@ -16,12 +16,20 @@ let cnv
 let framesWhenStageStarted = 0
 let fadeInFrames = 100
 let frames = 0
+let titleTheme
+let selected = -10
 
 
 function preload() {
     font = loadFont('data/consola.ttf')
     fixedWidthFont = loadFont('data/consola.ttf')
     variableWidthFont = loadFont('data/meiryo.ttf')
+    titleTheme = loadSound('data/title theme!.mp3', false, false)
+}
+
+function loopSound(sound, vol=0.4) {
+    sound.loop()
+    sound.amp(vol)
 }
 
 
@@ -31,32 +39,42 @@ function setup() {
     colorMode(HSB, 360, 100, 100, 100)
     textFont(font, 14)
 
-    let css = select("#backgroundImage")
-    css.style("background-image",
-        "url(\"data/flags/" +
-        flag + ".jpg" +
-        "\")")
-
-    css = select("#titleScreenImage")
-    css.style("background-image",
-        "url(\"data/flags/" +
-        flag + ".jpg" +
-        "\")")
-
     setupTitleScreen()
     frameRate(60)
 }
 
 
 function draw() {
-    frames++
-    cnv.clear()
-    drawTitleScreen()
-    cnv.background(0, 0, 0, map(frames - framesWhenStageStarted, 0, fadeInFrames, 120, 0))
-
-    print(frameRate())
+    switch (state) {
+        case 0:
+            frames++
+            cnv.clear()
+            drawTitleScreen()
+            cnv.background(0, 0, 0, map(frames - framesWhenStageStarted, 0, fadeInFrames, 120, 0))
+            break
+        case 1:
+            frames++
+            cnv.clear()
+            drawTitleScreen()
+            break
+    }
 }
 
 
 function keyPressed() {
+    if (state === 0 && frames - framesWhenStageStarted > fadeInFrames + 120) {
+        state = 1
+        loopSound(titleTheme, 0.4)
+        framesWhenStageStarted = frames
+        fadeInFrames = 0
+        selected = 0
+    }
+    if (selected > -10) {
+        if (key === "w") {
+            selected -= 1
+        }
+        if (key === "s") {
+            selected += 1
+        }
+    }
 }
