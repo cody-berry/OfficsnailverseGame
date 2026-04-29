@@ -22,3 +22,45 @@ body {
 #titleScreenImage {
     translate: 0px -700px;
 }
+
+#saveFileContainer {
+    color: gainsboro;
+    padding: 2px 4px 2px 4px;
+    font-family: consolas;
+    font-size: 12px;
+    height: 210px;
+}
+
+.savefileeditor {
+    color: gainsboro;
+    padding: 2px 0px 0px 0px;
+    font-family: consolas;
+    font-size: 12px;
+    width: 200px;
+    border-width: 0px;
+    background-image: url("data/flags/Sillylind.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+}
+
+.savefileuser {
+    color: black;
+    margin: 8px;
+    border-width: 0px;
+    background-image: url("data/flags/Ocean snail isles.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+}
+
+.savefiledisplay {
+    color: gainsboro;
+    padding: 2px 4px 2px 4px;
+    font-family: consolas;
+    font-size: 12px;
+    width: 100px;
+    text-wrap: wrap;
+}

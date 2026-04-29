@@ -18,6 +18,10 @@ let fadeInFrames = 100
 let frames = 0
 let titleTheme
 let selected = -10
+let keybinds = {
+
+}
+
 
 
 function preload() {
@@ -25,6 +29,9 @@ function preload() {
     fixedWidthFont = loadFont('data/consola.ttf')
     variableWidthFont = loadFont('data/meiryo.ttf')
     titleTheme = loadSound('data/title theme!.mp3', false, false)
+    print("If something goes really awry, input:" +
+        " \nlocalStorage.setItem(\"config save file\", \"0" +
+        " W,S,A,D,E,C,Q,Z,R,F,V\"); setup();\nThat should solve the problem.")
 }
 
 function loopSound(sound, vol=0.4) {
@@ -39,9 +46,12 @@ function setup() {
     colorMode(HSB, 360, 100, 100, 100)
     textFont(font, 14)
 
+    updateSaveHTML()
+
     setupTitleScreen()
     frameRate(60)
 }
+
 
 
 function draw() {
